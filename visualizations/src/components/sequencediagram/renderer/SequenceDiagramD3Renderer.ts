@@ -363,7 +363,7 @@ export class SequenceDiagramD3Renderer {
            };
 
            clearTimeout( scrollTimer );
-           scrollTimer = setTimeout( execute, 250 ); // 250 ms
+           scrollTimer = window.setTimeout( execute, 250 ); // 250 ms
 
            ++scrollEventCount;
            if ( scrollEventCount % 5 === 0 ){ // 5 = magic number, from experimental experience in chrome, very scientific
