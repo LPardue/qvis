@@ -10,6 +10,9 @@ import "bootstrap-vue/dist/bootstrap-vue.css";
 
 import { getModule } from "vuex-module-decorators";
 import ConnectionStore from "@/store/ConnectionStore";
+
+import './registerServiceWorker'
+
 // import { IQLog } from '@quictools/qlog-schema';
 
 // const standaloneFiles:Array<string> = [
