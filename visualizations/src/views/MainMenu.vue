@@ -20,12 +20,20 @@
             <b-tab title="Disabled" disabled><p>I'm a disabled tab!</p></b-tab>
         </b-tabs> -->
         <b-row>
-            <b-col cols="1" md="auto" class="align-middle"><h3 style="width: 290px;">qvis</h3></b-col>
+            
+            <b-col cols="1" md="auto" class="align-middle">
+            <b-row>
+            
+            <h3 style="margin: 0px 10px; width: 128px;">qvis</h3>
+            <b-button v-b-toggle.sidebar-1 variant="primary">Manage files</b-button>
+            
+            </b-row>
+            </b-col>
             <b-col>
                 <b-nav tabs align="center">
-                    <b-nav-item to="/files" class="files-link" :active="this.$route.fullPath.indexOf('/files') >= 0 || $route.fullPath === ''">
+                    <!--<b-nav-item to="/files" class="files-link" :active="this.$route.fullPath.indexOf('/files') >= 0 || $route.fullPath === ''">
                         Manage files
-                    </b-nav-item>
+                    </b-nav-item> -->
                     <b-nav-item to="/sequence" class="sequence-link" :active="$route.fullPath.indexOf('/sequence') >= 0">
                         Sequence
                     </b-nav-item>

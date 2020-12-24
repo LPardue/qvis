@@ -3,6 +3,8 @@
         <!--<div>{{(config ? config.manualRTT + " - " + config.scale : "UNKNOWN" )}}</div>-->
         <!--<b-button @click="adjustConfigTest()">Adjust config</b-button> -->
 
+        <!-- <FileManagerContainer></FileManagerContainer> -->
+        <Magoo></Magoo>
         <p style="padding-top: 10px;">Select one or more traces via the dropdown(s) below to visualize them in the sequence diagram</p>
         <b-container fluid>
                 <b-row>
@@ -53,6 +55,8 @@
     import { Component, Vue, Prop } from "vue-property-decorator";
     import SequenceDiagramConfig from "./data/SequenceDiagramConfig";
     import ConnectionConfigurator from "@/components/shared/ConnectionConfigurator.vue";
+    
+    import Magoo from "@/components/filemanager/Magoo.vue";
     import * as qlog from "@quictools/qlog-schema";
 
     import ConnectionStore from "@/store/ConnectionStore";
@@ -62,6 +66,7 @@
     @Component({
         components: {
             ConnectionConfigurator,
+            Magoo,
         },
     })
     export default class SequenceDiagramConfigurator extends Vue {

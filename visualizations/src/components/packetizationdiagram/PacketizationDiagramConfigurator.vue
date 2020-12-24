@@ -119,9 +119,12 @@
     import Connection from "@/data/Connection";
     import QlogConnection from '@/data/Connection';
 
+    import Magoo from "@/components/filemanager/Magoo.vue";
+
     @Component({
         components: {
             ConnectionConfigurator,
+            Magoo,
         },
     })
     export default class PacketizationDiagramConfigurator extends Vue {

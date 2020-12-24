@@ -1,6 +1,7 @@
 <template>
-    <div style="background-color: #d4edda; padding: 0px 10px;" >
 
+    <div style="background-color: #d4edda; padding: 0px 10px;" >
+        <Magoo></Magoo>
         <b-container fluid>
             <b-row align-h="center">
                 <p  style="margin-top: 10px;">Select a trace via the dropdown(s) below to visualize it in the congestion graph</p>
@@ -46,9 +47,12 @@
     import ConnectionGroup from "@/data/ConnectionGroup";
     import Connection from "@/data/Connection";
 
+    import Magoo from "@/components/filemanager/Magoo.vue";
+
     @Component({
         components: {
             ConnectionConfigurator,
+            Magoo
         },
     })
     export default class CongestionGraphConfigurator extends Vue {
