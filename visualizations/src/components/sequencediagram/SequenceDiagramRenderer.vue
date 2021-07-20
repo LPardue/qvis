@@ -5,7 +5,7 @@
 
         <div id="sequence-diagram" style="width: 100%; border:5px solid #cce5ff; min-height: 200px;">
             <svg id="sequence-diagram-svg">
-                
+
             </svg>
         </div>
         <b-modal id="event-modal" hide-footer title="Event detail">
@@ -20,13 +20,13 @@
             <b-button class="mt-3" block @click="hideEventModal">Close</b-button>
         </b-modal>
     </div>
-</template> 
+</template>
 
 <style>
     #sequence-diagram-svg text.timestamp {
         font-size: 11px;
     }
-</style> 
+</style>
 
 <script lang="ts">
     import { Component, Vue, Prop, Watch } from "vue-property-decorator";
@@ -61,7 +61,7 @@
                 this.focusOnNext = { connectionIndex: parseInt(queryParameters.focusOnConnection as string, 10), eventIndex: parseInt(queryParameters.focusOnEvent as string, 10) };
             }
             else if ( queryParameters.focusOnPN ) {
-                
+
                 let connectionIndex = 0;
                 if ( queryParameters.focusOnConnection ) {
                     connectionIndex = parseInt(queryParameters.focusOnConnection as string, 10);
@@ -97,7 +97,7 @@
             if ( event.qvis && event.qvis.sequencediagram && event.qvis.sequencediagram.focusInfo ) {
                 const focusInfo:EventPointer = event.qvis.sequencediagram.focusInfo as EventPointer;
                 eventNr = focusInfo.eventIndex;
-                
+
                 const traces = this.renderer!.getTraces();
 
                 const URLs:Array<string> = [];
@@ -145,7 +145,7 @@
             if ( eventNr !== undefined ) {
                 this.eventDetail = "Event nr: " + eventNr + "\n" + this.eventDetail;
             }
-            
+
             this.$bvModal.show("event-modal");
         }
 
@@ -174,10 +174,12 @@
                         await new Promise( (resolve) => setTimeout(resolve, 200));
                     }
 
-                    this.renderer.render( newConfig.connections, newConfig.timeResolution, this.focusOnNext ).then( (rendered) => {
-                        
+                    let focusOnNext = { connectionIndex: newConfig.jumpToPacketNumberIndex, packetNumber: newConfig.jumpToPacketNumber};
+
+                    this.renderer.render( newConfig.connections, newConfig.timeResolution, focusOnNext ).then( (rendered) => {
+
                         this.focusOnNext = null; // don't want to keep focusing on the same thing if we've changed selection
-                        
+
                         if ( !rendered ) {
                             Vue.notify({
                                 group: "default",
@@ -191,6 +193,6 @@
             }
         }
 
-    } 
+    }
 
 </script>
